@@ -1,0 +1,11 @@
+#content-layout {
+    background: url(../../assets/background.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.card-content {
+    border: 2px solid #ffffff;
+    border-radius: 18px; 
+    padding: 1rem;
+}

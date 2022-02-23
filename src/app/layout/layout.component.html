@@ -1,0 +1,47 @@
+<div class="flex flex-col" id="content-layout">
+    <div class="flex flex-row mx-auto mt-5">
+        <p class="mr-5 cursor-pointer font-lg text-white" (click)="clickEvent('movie')">Movies</p>
+        <p class="cursor-pointer font-lg text-white"(click)="clickEvent('char')">Character</p>
+    </div>
+    <div class="flex flex-col">
+        <img src="../../assets/top.png" class="mx-auto w-4/12 mt-3" alt="">
+    </div>
+    <div class="grid grid-rows-2 grid-flow-col gap-5 mx-8 mt-10 mb-10 text-white text-center" *ngIf="isMovie" >
+        <ng-container *ngFor="let list of movieLists.results">
+            <div class="card-content">
+                <h3 class="text-2xl font-bold">{{list.title}}</h3>
+                <span>{{list.release_date}}</span><br>
+                <span class="mb-10">{{list.director}}</span>
+                <p class="mt-10">{{list.opening_crawl}}</p>
+            </div>
+        </ng-container>
+    </div>
+
+    <div class="flex flex-col">
+        <div class="grid grid-rows-2 grid-flow-col gap-5 mx-8 mt-10 mb-32 text-white text-center" *ngIf="!isMovie" >
+            <ng-container *ngFor="let character of characters.results">
+                <div class="card-content cursor-pointer" (click) = "getDetail(character.url)">
+                    <h3 class="text-2xl font-bold">{{character.name}}</h3>
+                    <p><< SEE MORE >></p>
+                </div>
+            </ng-container>
+
+            <button (click) ="next()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    
+                Next
+            </button>
+        </div>
+    </div>
+
+    <div class="flex flex-col" *ngIf="characterDet">
+        <div class="grid grid-rows-2 grid-flow-col gap-5 mx-8 -mt-20 mb-12 text-white text-center" *ngIf="!isMovie" >
+            <ng-container >
+                <div class="card-content">
+                    <h3 class="text-2xl font-bold">{{characterDet.name}}</h3>
+                    <p class="text-lg font-bold"> Birth Date : <br> {{characterDet.birth_year}}</p> <br>
+                    <p class="text-lg font-bold"> Eye Color : <br> {{characterDet.eye_color}}</p>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

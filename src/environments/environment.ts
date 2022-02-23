@@ -3,8 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  version: '1.0.0',
+  DOMAIN_URL: 'https://swapi.dev/api/',
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
